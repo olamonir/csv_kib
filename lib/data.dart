@@ -43,19 +43,25 @@ class LoadCsvDataScreen extends StatelessWidget {
     List<List<dynamic>> rows1 = [];
     List<List<dynamic>> rows2 = [];
 
-    List<dynamic> row1 = [];
-    List<dynamic> row2 = [];
     String csv1;
     String csv2;
-    rows2.add(row2);
+
     String dir = "";
     csvList.then((value) async => {
               value.forEach((element) {
-                List<dynamic> row = [];
-                row.add(element[2]);
-                row.add(element[3]);
+                List<dynamic> row1 = [];
+                List<dynamic> row2 = [];
+
+                row1.add(element[2]);
+                row1.add(element[3]);
+
+                row2.add(element[2]);
+                row2.add(element[4]);
+
                 print("toString${element[0].toString()}");
-                rows1.add(row);
+
+                rows1.add(row1);
+                rows2.add(row2);
               }),
               if (defaultTargetPlatform == TargetPlatform.iOS ||
                   defaultTargetPlatform == TargetPlatform.android)
