@@ -95,7 +95,7 @@ class LoadCsvDataScreen extends StatelessWidget {
     Directory(appDocDirectory.path + '/' + '0$fileName.csv')
         .create(recursive: true)
         .then((Directory directory) {
-      File f = File(directory.path + "/0$fileName.csv");
+      File f = File(directory.path + "/0_$fileName.csv");
       f.writeAsString(csv1);
       print('Path of New Dir: ' + directory.path);
     });
@@ -103,7 +103,7 @@ class LoadCsvDataScreen extends StatelessWidget {
     Directory(appDocDirectory.path + '/' + '1$fileName.csv')
         .create(recursive: true)
         .then((Directory directory) {
-      File f = File(directory.path + "/1$fileName.csv");
+      File f = File(directory.path + "/1_$fileName.csv");
       f.writeAsString(csv2);
       print('Path of New Dir: ' + directory.path);
     });
