@@ -48,38 +48,48 @@ class LoadCsvDataScreen extends StatelessWidget {
 
     String dir = "";
     csvList.then((value) async => {
-              value.forEach((element) {
-                List<dynamic> row1 = [];
-                List<dynamic> row2 = [];
-
-                row1.add(element[2]);
-                row1.add(element[3]);
-
-                row2.add(element[2]);
-                row2.add(element[4]);
-
-                print("toString${element[0].toString()}");
-
-                rows1.add(row1);
-                rows2.add(row2);
-              }),
-              if (defaultTargetPlatform == TargetPlatform.iOS ||
-                  defaultTargetPlatform == TargetPlatform.android)
-                {
-                  // Some android/ios specific code
-                  csv1 = const ListToCsvConverter().convert(rows1),
-                  csv2 = const ListToCsvConverter().convert(rows2),
-                  fun(dir, csv1, csv2)
-                }
-              else if (defaultTargetPlatform == TargetPlatform.linux ||
-                  defaultTargetPlatform == TargetPlatform.macOS ||
-                  defaultTargetPlatform == TargetPlatform.windows)
-                {}
-              else
-                {}
+          filterData(value, rows1, rows2),
+          rows1.toSet().toList(),
+          print(rows1.toSet().toList().toString()),
+          if (defaultTargetPlatform == TargetPlatform.iOS ||
+              defaultTargetPlatform == TargetPlatform.android)
+            {
+              // Some android/ios specific code
+              csv1 = const ListToCsvConverter().convert(rows1),
+              csv2 = const ListToCsvConverter().convert(rows2),
+              fun(dir, csv1, csv2)
             }
-        // }
-        );
+          else if (defaultTargetPlatform == TargetPlatform.linux ||
+              defaultTargetPlatform == TargetPlatform.macOS ||
+              defaultTargetPlatform == TargetPlatform.windows)
+            {}
+          else
+            {}
+        });
+  }
+
+  void filterData(List<List<dynamic>> value, List<List<dynamic>> rows1,
+      List<List<dynamic>> rows2) {
+    return value.forEach((element) {
+      List<dynamic> row1 = [];
+      List<dynamic> row2 = [];
+
+// we need to remove reputation from element 2
+// we need to add the calculations for element 3 to
+
+      element.toSet().toList();
+      row1.add(element[2]);
+      row1.add(element[3]);
+      row1.toSet().toList();
+
+      row2.add(element[2]);
+      row2.add(element[4]);
+
+      print("toString${element[0].toString()}");
+
+      rows1.add(row1);
+      rows2.add(row2);
+    });
   }
 
   fun(String dir, String csv1, String csv2) async {
